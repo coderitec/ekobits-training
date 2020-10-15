@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>debugging exercises</title>
+</head>
+<body>
+    <main>
+        <section>
+            <h2>What does the throw keyword do?</h2>
+            <p>The throw statement throws a user-defined exception.
+                 Execution of the current function will stop according to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw" target="_blank">MDN source</a>. 
+                 The throw statement allows you to create a custom error from <a href="https://www.w3schools.com/jsref/jsref_throw.asp" target="_blank">W3Schools</a>.</p>
+       
+            <h2>What does the finally keyword do?</h2>
+            <p>The finally statement lets you execute code, after try and catch, regardless of the result.</p> 
+            
+            <h2>What is the difference between a TypeError and ReferenceError?</h2>
+            <p>A ReferenceError occurs when you try to use a variable that doesn't exist at all.</p>
+            <p>A TypeError occurs when the variable exists, but the operation you're trying 
+                to perform is not appropriate for the type of value it contains. In the case where the detailed message says "is not defined", this can occur if you have
+                 a variable whose value is the special undefined value, 
+                 and you try to access a property of it. See 
+                 <a href="https://stackoverflow.com/questions/12589391/difference-typeerror-and-referenceerror" target="_blank"> this stackoverflow document.</a>
+                </p>
+            
+            <h2>How do you create a snippet in the Chrome dev tools?</h2>
+            <ul>
+                <li>Open the Snippets pane.</li>
+                <li>Click New snippet.</li>
+                <li>Enter a name for your Snippet then press Enter to save. Read <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/snippets#:~:text=Naming%20a%20Snippet.-,Create%20a%20Snippet%20through%20the%20Command%20Menu,Enter%20to%20run%20the%20command.">more</a></li>
+            </ul>
+
+            <h4>In the Chrome dev tools, on the right hand side of the sources tab,
+                 there is a "pause" button which allows you to "pause on caught exceptions." 
+                 What is an exception?</h4>
+
+             <p>An exception stops a particular line of code from running when the button is clicked.</p> 
+             <figure>
+                 <img src="img/exception.PNG" alt="eexception pause">
+                 <figcaption>from the snippet, line 10 will be break on running </figcaption>
+             </figure>   
+
+             <h2>How do we "catch" errors in JavaScript? Give an example with code for what that might look like.</h2>
+
+             <figure>
+                 <img src="img/catch.PNG" alt="catch error">
+                 <figcaption>when the reference error is thrown, an error message can be 
+                     displayed as caught in the console, which read "i cannot understand you".
+                 </figcaption>
+             </figure>
+        </section>
+        <section>
+            <h2>Explain what type of error will be thrown, why the error is occuring, and how to fix it:
+            </h2><span> <br>1. person;</span>
+            <p>
+                <code>Error Type: ReferenceError</code>
+            </p>
+            <p>Correction: at least initialize the error to an empty string</p>
+
+            <span><br> 2. <pre>
+                let data = {};
+                data.displayInfo();
+            </pre></span>
+            <p>Answer: TypeError, displayInfo() is not a  function</p>
+            <p>Correction: remove the parenthesis from the method</p>
+
+            <span>
+                3. <pre>
+                    let data = {};
+                    data.displayInfo.foo = "bar";
+                </pre>
+            </span>
+            <p>Answer: TypeError: does not have a 'foo' property</p>
+            <p>Correction: set the 'foo' property on the object</p>
+
+            <span>
+               4. <pre>
+                    function data(){
+                        let thing = "foo";
+                    }
+                    data();
+                    thing;
+                </pre>
+
+                <p>Answer: Uncaught ReferenceError: thing is not defined</p>
+                <p>Correction: return the binding 'thing' inside the function</p>
+            </span>
+        </section>
+
+        <section>
+            <h1>Part II: Fix the broken code and explain what was wrong:</h1>
+
+            <p>1.
+                <pre>
+                    for(let i=0; i > 5; i++){
+                        console.log(i);
+                    }
+                </pre>
+            </p>
+            <p>'i' was initialized to '0' and same 'i' is greater than '5'. To fix it,
+                we can change that to less than '5' like this:
+                <code>
+                    for(let i=0; i < 5; i++){
+                        console.log(i);
+                    }
+                </code>
+            </p>
+
+            <p>
+                2.
+                <pre>
+                    function addIfEven(num){
+                        if(num % 2 = 0){
+                            return num + 5;
+                        }
+                        return num;
+                    }
+
+                </pre>
+            </p>
+            <p>Answer: an IF statement always expects a logic, change the equality sign to comparison operator</p>
+            <pre>
+                <code>
+                    function addIfEven(num){
+                        if(num % 2 == 0){
+                            return num + 5;
+                        }
+                        return num;
+                    }
+                </code>
+            </pre>
+            <p>
+                3.
+                <pre>
+                    function loopToFive(){
+                        for(let i=0, i < 5, i++){
+                            console.log(i);
+                        }
+                    }
+                </pre>
+            </p>
+            <p>a for loop takes a semi-colon and not a comma</p>
+            <pre>
+                <code>
+                    function loopToFive(){
+                        for(let i=0; i < 5; i++){
+                            console.log(i);
+                        }
+                    }
+                </code>
+            </pre>
+
+            <p>
+                <pre>
+                    <code>
+                        function displayEvenNumbers(){
+                            let numbers = [1,2,3,4,5,6,7,8];
+                            let evenNumbers = [];
+                            for(let i=0; i < numbers.length-1; i++;){
+                                if(numbers % 2 = 0); {
+                                    evenNumbers.push(i);
+                                }
+                                return evenNumbers;
+                            }
+                        }
+                        displayEvenNumbers();
+
+                    </code>
+                </pre>
+            </p>
+            <p>series of errors to correct:</p>
+            <ol>
+                <li>remove the semi-colon after IF statement</li>
+                <li>change the 'number' in the IF statement to 'i'</li>
+                <li>use comparison operator '==' instead of '=' in the IF statement</li>
+                <li>return the evenNumbers array after the for loop</li>
+                <li>change the for loop parameters to 'For Of'</li>
+            </ol>
+            <pre>
+                <code>
+                    function displayEvenNumbers(){
+                        let numbers = [1,2,3,4,5,6,7,8];
+                        let evenNumbers = [];
+                        for(let i of numbers){
+                            if(i % 2 == 0) {
+                                evenNumbers.push(i);
+                            }
+                            
+                        }
+                        return evenNumbers;
+                    }
+                    displayEvenNumbers();
+                </code>
+            </pre>
+        </section>
+    </main>
+</body>
+</html>
