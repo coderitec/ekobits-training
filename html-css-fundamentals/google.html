@@ -5,14 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google | Home Page</title>
     <style>
-        h1{
-            text-align: center;
+        .title{
+            margin-top: 150px;
         }
+        h1 {
+            text-align: center;
+            font-family:  Tahoma, sans-serif;
+            
+        }
+        h1 span{
+            font-size: 70px;
+            letter-spacing: none;
+        }
+        h1 span:nth-of-type(1){
+            color: blue;
+        }
+        h1 span:nth-of-type(2){
+            color: red;
+        }
+        h1 span:nth-of-type(3){
+            color: yellow;
+        }
+        h1 span:nth-of-type(4){
+            color: blue;
+        }
+        h1 span:nth-of-type(5){
+            color: green;
+        }
+        h1 span:nth-of-type(6){
+            color: red;
+        }
+
+        .search-box{
+            width: 50%;
+            margin: 0 auto;
+        }
+        .search-box input {
+            width: 100%;
+            height: 50px;
+            border-radius: 30px;
+            font-size: 16px;
+            border: none;
+            box-shadow: 4px 5px 5px 3px rgba(201, 195, 195, 0.897);
+
+        }
+
+        input:focus{
+            border: none;
+        }
+     
     </style>
 </head>
 <body>
     <main>
-        <section>
+        <section class="title">
             <h1>
                 <span>G</span>
                 <span>o</span>
@@ -21,9 +67,9 @@
                 <span>l</span>
                 <span>e</span>
             </h1>
-            <section>
-                <input type="search" autofocus>
-            </section>
+        </section>
+        <section class="search-box">
+            <input type="search" autofocus>                
         </section>
     </main>
 </body>
